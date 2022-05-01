@@ -52,7 +52,7 @@ const [data, setData]=React.useState([])
 axios.get('http://localhost:5001/all')
   .then((response) => {
     const username=response.data.user[0].username;
-    // setData(username)
+    setData(username)
     // console.log(response.data)
     console.log(response.data)
   }
