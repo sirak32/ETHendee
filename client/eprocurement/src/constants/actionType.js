@@ -1,5 +1,8 @@
-export const CREATE = 'CREATE';
-export const UPDATE = 'UPDATE';
-export const DELETE = 'DELETE';
-export const FETCH_ALL = 'FETCH_ALL';
-export const LIKE = 'LIKE';
+export const CREATE_SUPPLIER = "CREATE_SUPPLIER";
+export const UPDATE_SUPPLIER = "UPDATE_SUPPLIER";
+export const DELETE_SUPPLIER = "DELETE_SUPPLIER";
+export const FETCH_SUPPLIER = "FETCH_SUPPLIER";
+
+export const ADD_STARTED = "ADD_STARTED";
+export const ADD_SUCCESS = "ADD_SUCCESS";
+export const ADD_FAILURE = "ADD_FAILURE";

@@ -1,3 +1,3 @@
 import axios from "axios";
-const url ='http//:localhost:5000/tenders'
+const url ='http//:localhost:5001/all'
 export const fetchPosts=()=>axios.get(url)

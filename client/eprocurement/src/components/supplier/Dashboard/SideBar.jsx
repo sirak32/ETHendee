@@ -11,6 +11,9 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { VscChromeClose } from "react-icons/vsc";
 import scrollreveal from "scrollreveal";
 import { IoNavigateCircle } from 'react-icons/io5';
+import { BrowserRouter as Router,Routes, Route, Link } from 'react-router-dom';
+import Login from './Login'
+import { Table } from "@mui/material";
 export default function Sidebar() {
   const [currentLink, setCurrentLink] = useState(2);
   const [navbarState, setNavbarState] = useState(false);
@@ -44,7 +47,8 @@ export default function Sidebar() {
   }, []);
 
   return (
-    <>
+    <Router>
+
       <Section>
         <div className="top">
           <div className="brand">
@@ -55,15 +59,15 @@ export default function Sidebar() {
             {navbarState ? (
               <VscChromeClose style={{padding:'0rem 1.5rem'}}
               onClick={() => setNavbarState(false)} />
-            ) : (
-              <GiHamburgerMenu
-              style={{padding:'0rem 1.5rem'}}
+              ) : (
+                <GiHamburgerMenu
+                style={{padding:'0rem 1.5rem'}}
                 onClick={(e) => {
                   e.stopPropagation();
                   setNavbarState(true);
                 }}
-              />
-            )}
+                />
+                )}
           </div>
           <div className="links">
             <ul>
@@ -79,8 +83,8 @@ export default function Sidebar() {
               <li
                 className={currentLink === 2 ? "active" : "none"}
                 onClick={() => setCurrentLink(2)}
-              >
-                <a href="#">
+                >
+                <a href="/">
                   <RiDashboard2Fill />
                   <span> Tenders</span>
                 </a>
@@ -88,7 +92,7 @@ export default function Sidebar() {
               <li
                 className={currentLink === 3 ? "active" : "none"}
                 onClick={() => setCurrentLink(3)}
-              >
+                >
                 <a href="#">
                   <FaAddressCard />
                   <span> Suppliers</span>
@@ -97,8 +101,9 @@ export default function Sidebar() {
               <li
                 className={currentLink === 4 ? "active" : "none"}
                 onClick={() => setCurrentLink(4)}
-              >
-                <a href="#">
+                >
+                <a href="/officer">
+
                   <GiTwirlCenter />
                   <span> Officers</span>
                 </a>
@@ -106,7 +111,7 @@ export default function Sidebar() {
               <li
                 className={currentLink === 5 ? "active" : "none"}
                 onClick={() => setCurrentLink(5)}
-              >
+                >
                 <a href="#">
                   <BsFillChatTextFill />
                   <span> FAQs</span>
@@ -115,7 +120,7 @@ export default function Sidebar() {
               <li
                 className={currentLink === 6 ? "active" : "none"}
                 onClick={() => setCurrentLink(6)}
-              >
+                >
                 <a href="#">
                   <IoSettings />
                   <span> Settings</span>
@@ -137,7 +142,7 @@ export default function Sidebar() {
             <li
               className={currentLink === 1 ? "active" : "none"}
               onClick={() => setCurrentLink(1)}
-            >
+              >
               <a href="#">
                 <MdSpaceDashboard />
                 <span> Dashboard</span>
@@ -146,7 +151,7 @@ export default function Sidebar() {
             <li
               className={currentLink === 2 ? "active" : "none"}
               onClick={() => setCurrentLink(2)}
-            >
+              >
               <a href="#">
                 <RiDashboard2Fill />
                 <span> Tenders</span>
@@ -155,7 +160,7 @@ export default function Sidebar() {
             <li
               className={currentLink === 3 ? "active" : "none"}
               onClick={() => setCurrentLink(3)}
-            >
+              >
               <a href="#">
                 <FaAddressCard />
                 <span> Suppliers</span>
@@ -164,8 +169,9 @@ export default function Sidebar() {
             <li
               className={currentLink === 4 ? "active" : "none"}
               onClick={() => setCurrentLink(4)}
-            >
+              >
               <a href="#">
+                <Link to="/officer"></Link>
                 <GiTwirlCenter />
                 <span> Officers</span>
               </a>
@@ -173,7 +179,7 @@ export default function Sidebar() {
             <li
               className={currentLink === 5 ? "active" : "none"}
               onClick={() => setCurrentLink(5)}
-            >
+              >
               <a href="#">
                 <BsFillChatTextFill />
                 <span> FAQs</span>
@@ -182,7 +188,7 @@ export default function Sidebar() {
             <li
               className={currentLink === 6 ? "active" : "none"}
               onClick={() => setCurrentLink(6)}
-            >
+              >
               <a href="#">
                 <IoSettings />
                 <span> Settings</span>
@@ -191,22 +197,28 @@ export default function Sidebar() {
           </ul>
         </div>
       </ResponsiveNav>
-    </>
+      <Routes>
+                 <Route exact path='/officer' element={<Login/>}></Route>
+                 <Route exact path='/' element={<Table/>}></Route>
+
+               
+          </Routes>
+      </Router>
   );
 }
 const Section = styled.section`
-  position: fixed;
-  left: 0;
-  background-color: #212121;
-  height: 100vh;
-  width: 18vw;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: 2rem 0;
-  gap: 2rem;
-  .top {
+position: fixed;
+left: 0;
+background-color: #212121;
+height: 100vh;
+width: 18vw;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: space-between;
+padding: 2rem 0;
+gap: 2rem;
+.top {
     display: flex;
     flex-direction: column;
     gap: 2rem;
